@@ -1,7 +1,7 @@
 # CelestronESPWifi
 ESP based wifi adapter for Celestron telescopes
 
-The official celestron wifi module is €190.
+The official Celestron WiFi module is €190.
 
 CelestronESPWifi parts list:
   * ESP Module: €1.25c
@@ -11,15 +11,15 @@ CelestronESPWifi parts list:
 
 Total = less than €10 anyway.
 
-## Communications System ##
-
-The scope uses a UART system over one wire. Multiple devices can communicate on this same bus by pulling RST low, then sending data. Source and Destination IDs are sent in the packets so devices know what data is for them.
-
 ## Notes and Features ##
 
 1. Works with SkyPortal App seemingly perfectly.
 2. Does not like other peripherals yet (keypad must be unplugged)
 3. ESP firmware can be updated remotely
+
+## Example Build ##
+
+<img src="Extra/Photos/IMG_20211026_015507.jpg" width="640"/>
 
 ## Minimum Parts List ##
 
@@ -35,14 +35,15 @@ The scope uses a UART system over one wire. Multiple devices can communicate on 
 <img src="Extra/Fritzing_Render.png" width="640"/>
 <img src="Extra/Fritzing_Schematic.png" width="640"/>
 
-## Example Build ##
-
-<img src="Extra/Photos/IMG_20211026_015507.jpg" width="640"/>
-
 ## Firmware Notes ##
 
 ESP firmware will host a wifi access point, default named Celestron. The ESPs IP is 1.2.3.4 and opens a tcp listen port on port 2000. Don't change these as it's a requirement for the SkyPortal app to work. Port 80 can be accessed to update firmware over HTTP if required - please make sure to flash it before you embed it in a project :)
+
 Because SoftwareSerial is used - we can choose what pins to TX and RX on, so if it needs changing afterwards this can be updated in the sketch and uploaded over HTTP. Just make sure the diodes are in the correct direction for the TX and RX data flow. Similarly the RST pin can be changed. If you plan to use a bare ESP, I recommend not to use GPIO15 as it will be shorted to ground.
+
+## Communications System ##
+
+The scope uses a UART system over one wire. Multiple devices can communicate on this same bus by pulling RST low, then sending data. Source and Destination IDs are sent in the packets so devices know what data is for them.
 
 ## Similar projects ##
 
