@@ -41,9 +41,11 @@ ESP firmware will host a wifi access point, default named Celestron. The ESPs IP
 
 Because SoftwareSerial is used - we can choose what pins to TX and RX on, so if it needs changing afterwards this can be updated in the sketch and uploaded over HTTP. Just make sure the diodes are in the correct direction for the TX and RX data flow. Similarly the RST pin can be changed. If you plan to use a bare ESP, I recommend not to use GPIO15 as it will be shorted to ground.
 
-## Communications System ##
+## Hardware Notes ##
 
+If you use a bare ESP; set the buck converter voltage to 3.3v, any other module such as a NodeMCU will take 5v.
 The scope uses a UART system over one wire. Multiple devices can communicate on this same bus by pulling RST low, then sending data. Source and Destination IDs are sent in the packets so devices know what data is for them.
+There have been varying reports from other smarter people on pull up/down resistor anomalies so if you deviate from this design you may come into those issues, see reading material below. 
 
 ## Similar projects ##
 
