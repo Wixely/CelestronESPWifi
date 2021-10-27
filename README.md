@@ -1,10 +1,10 @@
 # CelestronESPWifi
-ESP based wifi adapter for Celestron telescopes
+ESP8266 based wifi adapter for Celestron telescopes
 
-The official Celestron WiFi module is €190.
+The official Celestron Skyportal WiFi module is €190~. (aka SkyQ Link, aka Skylink)
 
 CelestronESPWifi parts list:
-  * ESP Module: €1.25c
+  * ESP8266 Module: €1.25c
   * Buck Converter: €0.75c
   * Cable: €3.00
   * Jellybeans: €2.00
@@ -39,7 +39,7 @@ Total = less than €10 anyway.
 
 ESP firmware will host a wifi access point, default named Celestron. The ESPs IP is 1.2.3.4 and opens a tcp listen port on port 2000. Don't change these as it's a requirement for the SkyPortal app to work. Port 80 can be accessed to update firmware over HTTP if required - please make sure to flash it before you embed it in a project :)
 
-Because SoftwareSerial is used - we can choose what pins to TX and RX on, so if it needs changing afterwards this can be updated in the sketch and uploaded over HTTP. Just make sure the diodes are in the correct direction for the TX and RX data flow. Similarly the RST pin can be changed. If you plan to use a bare ESP, I recommend not to use GPIO15 as it will be shorted to ground.
+Because [SoftwareSerial](https://www.arduino.cc/en/Reference/softwareSerial) is used - we can choose what pins to TX and RX on, so if it needs changing afterwards this can be updated in the sketch and uploaded over HTTP. Just make sure the diodes are in the correct direction for the TX and RX data flow. Similarly the RST pin can be changed. If you plan to use a bare ESP, I recommend not to use GPIO15 as it will be shorted to ground.
 
 ## Hardware Notes ##
 
@@ -58,3 +58,9 @@ https://sites.google.com/site/wayneholder/nexstar-direct-telescope-mount-control
 https://www.cloudynights.com/topic/652569-nexremote-cable-with-usb-ttl-serial-uart-converter-cable-with-ftdi-chip/page-2
 
 Simply having this info meant that I could confirm my setup worked and my logic analyser was reading expected data.
+
+## Additional Notes ##
+
+On AA battery power, when the batteries are low at some point the motors will stop working. In this situation the ESP will probably still have power and the ability to communicate and link to the Skyportal app successfully. Input commands to the motor will not work, there is no indication of low power. It seems this behaviour is normal and even the official keypad gives you no low-power warning. Don't panic, simply get new batteries.
+
+CelestronESPWifi was developed and confirmed working on a Celestron Nexstar 4SE.
