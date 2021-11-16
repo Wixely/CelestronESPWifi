@@ -14,8 +14,8 @@ Total = less than €10 anyway.
 ## Notes and Features ##
 
 1. Confirmed working with Celestron SkyPortal App and Skysafari 6 Pro (Select scope type: "Celestron Wi-Fi").
-2. Works with keypad (Tested on Celestron SE4), not tested with other peripherals.
-3. ESP firmware can be updated remotely over webpage
+2. Works with keypad (Tested on Celestron 4SE), not tested with other peripherals.
+3. ESP firmware can be updated remotely over webpage via http.
 
 ## Example Build ##
 
