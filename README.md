@@ -13,9 +13,9 @@ Total = less than €10 anyway.
 
 ## Notes and Features ##
 
-1. Works with SkyPortal App seemingly perfectly.
-2. Does not like other peripherals yet (keypad must be unplugged)
-3. ESP firmware can be updated remotely
+1. Confirmed working with Celestron SkyPortal App and Skysafari 6 Pro (Select scope type: "Celestron Wi-Fi").
+2. Works with keypad (Tested on Celestron SE4), not tested with other peripherals.
+3. ESP firmware can be updated remotely over webpage
 
 ## Example Build ##
 
@@ -45,7 +45,7 @@ Because [SoftwareSerial](https://www.arduino.cc/en/Reference/softwareSerial) is 
 
 If you use a bare ESP; set the buck converter voltage to 3.3v, any other module such as a NodeMCU will take 5v.
 The scope uses a UART system over one wire. Multiple devices can communicate on this same bus by pulling RST low, then sending data. Source and Destination IDs are sent in the packets so devices know what data is for them.
-There have been varying reports from other smarter people on pull up/down resistor anomalies so if you deviate from this design you may come into those issues, see reading material below. 
+There have been varying reports from other smarter people on pull up/down resistor anomalies so if you deviate from this design you may come into those issues, see reading material below. If using a NodeMCU or other similar premade board, the pullup resistor and short on the EN pin and GPIO 15 are not needed. Be aware there are RJ12 cables with reversed colour layout, use a multimeter to find the 12v pin if you are unsure if you have a reversed version.
 
 ## Similar projects ##
 
